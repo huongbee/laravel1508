@@ -12,7 +12,8 @@ class PageController extends Controller
     }
     
     public function getDetail(){
-        return view('pages.detail');
+        $productName = "Tên sản phẩm";
+        return view('pages.detail',compact('productName'));
     }
 
     public function getThongtin($ten,$idSP){
@@ -20,10 +21,9 @@ class PageController extends Controller
         // echo '<hr>';
         // echo $idSP;
 
-        return view('pages.thongtin',[
-            'name'=>$ten,
-            'id'=>$idSP
-        ]);
+        //return view('pages.thongtin',['name'=>$ten,'id'=>$idSP]);
+
+        return view('pages.thongtin',compact('ten','idSP'));
     }
 
     public function getThongtin_C2(Request $request){
