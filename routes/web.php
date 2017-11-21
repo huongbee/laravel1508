@@ -94,3 +94,8 @@ Route::get('get-cookie','PageController@getCookie');
 
 Route::get('set-session','PageController@setSession');
 Route::get('get-session','PageController@getSession');
+
+
+//form
+//input
+//upload file
