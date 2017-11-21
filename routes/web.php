@@ -85,3 +85,12 @@ Route::get('/detail','PageController@getDetail')->name('detail-page');
 
 Route::get('san-pham-{ten}-{id?}','PageController@getThongtin');
 //Route::get('san-pham-{ten}-{id?}','PageController@getThongtin_C2');
+
+
+Route::get('demo-request','PageController@getDemoRequest');
+
+Route::get('set-cookie','PageController@setCookie');
+Route::get('get-cookie','PageController@getCookie');
+
+Route::get('set-session','PageController@setSession');
+Route::get('get-session','PageController@getSession');
