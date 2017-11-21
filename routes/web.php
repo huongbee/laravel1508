@@ -83,5 +83,5 @@ Route::get('/','PageController@getHomePage');
 
 Route::get('/detail','PageController@getDetail')->name('detail-page');
 
-//Route::get('san-pham-{ten}-{id?}','PageController@getThongtin');
-Route::get('san-pham-{ten}-{id?}','PageController@getThongtin_C2');
+Route::get('san-pham-{ten}-{id?}','PageController@getThongtin');
+//Route::get('san-pham-{ten}-{id?}','PageController@getThongtin_C2');
