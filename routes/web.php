@@ -99,3 +99,13 @@ Route::get('get-session','PageController@getSession');
 //form
 //input
 //upload file
+
+Route::get('form-demo',[
+    'uses'=>"HomeController@getContactForm", //call controller
+    'as'=>'contact' //name route
+]);
+
+Route::post('form-demo',[
+    'uses'=>"HomeController@postContactForm", //call controller
+    'as'=>'contact' //name route
+]);
