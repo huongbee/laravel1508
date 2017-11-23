@@ -109,3 +109,16 @@ Route::post('form-demo',[
     'uses'=>"HomeController@postContactForm", //call controller
     'as'=>'contact' //name route
 ]);
+
+
+
+
+Route::get('upload-file',[
+    'uses'=>"HomeController@getUploadFile", //call controller
+    'as'=>'upload-file' //name route
+]);
+
+Route::post('upload-file',[
+    'uses'=>"HomeController@postUploadFile", //call controller
+    'as'=>'upload-file' //name route
+]);

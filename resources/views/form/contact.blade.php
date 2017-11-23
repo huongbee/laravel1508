@@ -16,7 +16,7 @@
     </style>
     <body>
         <h2>Contact Form</h2>
-        <form method="post" action="">
+        <form method="post" action="{{route('contact')}}">
 
             Họ tên: <br>
             <input type="text" name="fullname" placeholder="Nhập họ tên"/>
@@ -29,12 +29,23 @@
             Tiêu đề: <br>
             <input type="text" name="title" placeholder="Nhập Tiêu đề"/>
             <br><br>
+            
 
             Nội dung: <br>
             <textarea name="message" rows="5"></textarea>
 
+            
             <br><br>
+            Hình ảnh: <br>
+            <input type="file" name="hinhanh" />
+            <br><br>
+
+
             <button type="submit" name="btnSend" >Gửi</button>
+
+            {{-- <input type="hidden" name="_token" value="{{csrf_token()}}"> --}}
+
+            {{csrf_field()}}
 
         </form>
         
