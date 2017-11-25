@@ -122,3 +122,48 @@ Route::post('upload-file',[
     'uses'=>"HomeController@postUploadFile", //call controller
     'as'=>'upload-file' //name route
 ]);
+
+
+Route::get('create-product-table',function(){
+	Schema::create('product',function($table){
+		$table->increments('id');
+		$table->string('name',100);
+		$table->date('date_create');
+	});
+	echo "created!";
+});
+
+Route::get('create-product-type-table',function(){
+	Schema::create('product-type',function($table){
+		$table->increments('id');
+		$table->string('name',50);
+		$table->date('date_create');
+	});
+	echo "table product-type created!";
+});
+
+
+Route::get('modify-product-table',function(){
+	Schema::table('product',function($table){
+		$table->float('price',5);
+		$table->integer('id_type')->unsigned();
+		$table->foreign('id_type')->references('id')->on('product-type');
+	});
+	echo "successfully!";
+});
+
+Route::get('modify-product-table-2',function(){
+	Schema::table('product',function($table){
+		//$table->string('name',50)->change();
+		$table->dropColumn('date_create');
+	});
+	echo "successfully!";
+});
+
+Route::get('drop-table',function(){
+	//Schema::drop('users');
+	Schema::dropIfExists('users');
+	echo "successfully!";
+});
+
+
