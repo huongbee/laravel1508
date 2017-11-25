@@ -13,11 +13,23 @@
             <div class="row justify-content-center">
                 <div class=" col-lg-6">
                     <h2>Contact Form</h2>
+                        {{-- có lỗi --}}
+                    @if($errors->any()) 
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $err)
+                                {{$err}}<br>
+                            @endforeach
+                        </div>
+                    @endif
 
                     <form method="post" action="{{route('contact')}}">
 
                         Họ tên: <br>
                         <input type="text" class="form-control" name="fullname" placeholder="Nhập họ tên"/>
+                        <br>
+
+                        Tuổi: <br>
+                        <input type="text" class="form-control" name="age" placeholder="Nhập tuổi"/>
                         <br>
 
                         Email: <br>

@@ -12,6 +12,21 @@ class HomeController extends Controller
 
 
     public function postContactForm(Request $req){
+        //required: bắt buộc phải nhập
+
+        $req->validate([
+            'fullname'=>'required|min:10|max:50',
+            'email'=>'required|email',
+            'title'=>'required|min:10|max:50',
+            'hinhanh'=>'required',
+            'age'=>'required|numeric'
+        ],[
+            'fullname.required'=>'Vui lòng nhập họ tên',
+            'fullname.min'=>'Vui lòng nhập tên ít nhất 10 kí tự',
+            'age.numeric'=>'Vui lòng tuổi là số'
+
+        ]);
+
     	echo $_POST['fullname']; 
     	echo '<hr>';
 
@@ -36,13 +51,13 @@ class HomeController extends Controller
 
     	echo $req->input('name',"KPT"); //tương đương với line 40-45
 
-    	echo '<hr>';
-    	if(isset($req->name) ){
-    		echo $req->name;
-    	}
-    	else{
-    		echo 'KPT';
-    	}
+    	// echo '<hr>';
+    	// if(isset($req->name) ){
+    	// 	echo $req->name;
+    	// }
+    	// else{
+    	// 	echo 'KPT';
+    	// }
     }
 
 
