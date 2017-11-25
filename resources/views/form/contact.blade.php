@@ -6,48 +6,48 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     </head>
-    <style>
-        body{
-            width: 800px;
-            margin: auto;
-            display: block;
-        }
-    </style>
     <body>
-        <h2>Contact Form</h2>
-        <form method="post" action="{{route('contact')}}">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class=" col-lg-6">
+                    <h2>Contact Form</h2>
 
-            Họ tên: <br>
-            <input type="text" name="fullname" placeholder="Nhập họ tên"/>
-            <br><br>
+                    <form method="post" action="{{route('contact')}}">
 
-            Email: <br>
-            <input type="email" name="email" placeholder="Nhập email"/>
-            <br><br>
+                        Họ tên: <br>
+                        <input type="text" class="form-control" name="fullname" placeholder="Nhập họ tên"/>
+                        <br>
 
-            Tiêu đề: <br>
-            <input type="text" name="title" placeholder="Nhập Tiêu đề"/>
-            <br><br>
-            
+                        Email: <br>
+                        <input type="email" class="form-control" name="email" placeholder="Nhập email"/>
+                        <br>
 
-            Nội dung: <br>
-            <textarea name="message" rows="5"></textarea>
+                        Tiêu đề: <br>
+                        <input type="text" class="form-control" name="title" placeholder="Nhập Tiêu đề"/>
+                        <br>
+                        
 
-            
-            <br><br>
-            Hình ảnh: <br>
-            <input type="file" name="hinhanh" />
-            <br><br>
+                        Nội dung: <br>
+                        <textarea name="message" class="form-control" rows="5"></textarea>
 
+                        
+                        <br>
+                        <input type="file" name="hinhanh" />
+                        <br><br>
 
-            <button type="submit" name="btnSend" >Gửi</button>
+                        <button type="submit" class="btn btn-primary" name="btnSend" >Gửi</button>
 
-            {{-- <input type="hidden" name="_token" value="{{csrf_token()}}"> --}}
+                        {{-- <input type="hidden" name="_token" value="{{csrf_token()}}"> --}}
 
-            {{csrf_field()}}
+                        {{csrf_field()}}
 
-        </form>
+                    </form> 
+                </div>
+            </div>
+        </div>
+        
         
     </body>
 </html>
