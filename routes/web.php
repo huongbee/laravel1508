@@ -167,3 +167,17 @@ Route::get('drop-table',function(){
 });
 
 
+Route::group(['prefix'=>'query-builder'],function(){
+
+	Route::get('select-product','HomeController@getAllProductss');
+
+	Route::get('insert-bill-detail','HomeController@getInsertBillDetail');
+
+	Route::get('update-bill-detail','HomeController@getUpdateBillDetail');
+
+	Route::get('delete-bill-detail','HomeController@getDeleteBillDetail');
+
+	Route::get('delete-bill-detail/{id}','HomeController@getDeleteBillDetailByID');
+});
+
+

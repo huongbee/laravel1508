@@ -12,5 +12,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        DB::table('product-type')->insert([
+        	'name'=>'Loại 2',
+        	'date_create'=>"2017-12-26"
+        ]);
     }
 }
