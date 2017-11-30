@@ -178,6 +178,12 @@ Route::group(['prefix'=>'query-builder'],function(){
 	Route::get('delete-bill-detail','HomeController@getDeleteBillDetail');
 
 	Route::get('delete-bill-detail/{id}','HomeController@getDeleteBillDetailByID');
+	Route::get('truncate-bill-detail','HomeController@getTruncateBillDetail');
 });
 
+
+Route::group(['prefix'=>'eloquent-model'],function(){
+	
+	Route::get('select-users','HomeController@getAllUsers');
+});
 

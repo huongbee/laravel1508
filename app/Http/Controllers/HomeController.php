@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -103,26 +104,18 @@ class HomeController extends Controller
 	        	echo "File không được phép chọn";
 	        }
 
-	        
-
 	        // echo '<hr>';
 	        // echo $ext = $file->getClientOriginalExtension();
-
-
-	        
     	}
     	else{
     		echo "Bạn chưa chọn ảnh";
     	}
-
-       
-
     }
 
 
 
     public function getAllProductss(){
-        //$products = DB::table('foods')->get(); //select * from foods
+        $products = DB::table('foods')->get(); //select * from foods
 
         //select * from foods where id<=10
         //$products = DB::table('foods')->where('id','<=',10)->get();
@@ -206,13 +199,13 @@ class HomeController extends Controller
 
 
         //thống kê sp có giá thấp nhất theo loại
-        $products = DB::table('foods')
+        /*$products = DB::table('foods')
                     ->selectRaw('food_type.name as ten_loai , min(foods.price) as GiaThapNhat')
                     ->join('food_type',function($join){
                         $join->on('food_type.id','=','foods.id_type');
                     })
                     ->groupBy('food_type.name')
-                    ->get();
+                    ->get();*/
 
         //thống kê sp có giá thấp nhất theo loại chỉ lấy loại đầu tiên
         /*$products = DB::table('foods')
@@ -224,12 +217,12 @@ class HomeController extends Controller
                     ->first();*/
 
 
-        foreach ($products as  $loai) {
+        /*foreach ($products as  $loai) {
             echo $loai->ten_loai;
             echo " : ";
             echo $loai->GiaThapNhat;
             echo "<hr>";
-        }
+        }*/
 
         //liệt kê danh sách sp theo từng loại
         //7
@@ -241,17 +234,13 @@ class HomeController extends Controller
 
 
         */
-        $products = DB::table('foods')
+       /* $products = DB::table('foods')
                     ->selectRaw('food_type.name as ten_loai , group_concat(foods.id,":",foods.name separator "---") as dssp')
                     ->join('food_type',function($join){
                         $join->on('food_type.id','=','foods.id_type');
                     })
                     ->groupBy('food_type.name')
-                    ->get();
-
-
-
-
+                    ->get();*/
 
         dd($products);
 
@@ -297,5 +286,23 @@ class HomeController extends Controller
         ->where('id',$id)
         ->delete();
         echo 'deleted!';
+    }
+
+    function getTruncateBillDetail(){
+        DB::table('bill_detail')
+        ->truncate();
+        echo 'truncated!';
+    }
+
+    function getAllUsers(){
+       // $users = User::all(); //select * from users
+        $users = User::select('id','username','fullname as HoTen')
+                    ->where('id','<=',5)
+                    ->orWhere('username','like','%huong%')
+                    ->orderBy('id','DESC')
+                    ->offset(1)
+                    ->limit(5)
+                    ->get();
+        dd($users);
     }
 }
