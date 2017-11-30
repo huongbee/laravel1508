@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\User;
+use App\Foods;
+use App\Bills;
+use App\BillDetail;
 
 class HomeController extends Controller
 {
@@ -304,5 +307,41 @@ class HomeController extends Controller
                     ->limit(5)
                     ->get();
         dd($users);
+    }
+
+    function getFoods(){
+       /* $foods = Foods::select('id','name','price')
+                    ->where('id','<=',50)
+                    ->orderBy('id','DESC')
+                    ->offset(1)
+                    ->limit(5)
+                    ->get();*/
+
+       /* $foods = Foods::where('id','<=',10)
+                    ->orWhere('name','like','%ngô%')
+                    ->get();*/
+        $foods = Foods::selectRaw('food_type.name as ten_loai , min(foods.price) as GiaThapNhat')
+                    ->join('food_type',function($join){
+                        $join->on('food_type.id','=','foods.id_type');
+                    })
+                    ->groupBy('food_type.name')
+                    ->get();
+        dd($foods);
+    }
+
+    function getBills(){
+        $bills = Bills::with('BillDetail')->get();
+
+        //dd($bills[1]->BillDetail);
+        //dd($bills);
+
+        foreach ($bills as $value) {
+            echo "Chi tiết đơn giá của hóa đơn số ".$value->id . " là: ";
+            echo "<br>";
+            foreach ($value->BillDetail as $bill_detail) {
+                echo "*** ".$bill_detail->price."<br>";
+            }
+            echo "<hr>";
+        }
     }
 }

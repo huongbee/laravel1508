@@ -183,7 +183,12 @@ Route::group(['prefix'=>'query-builder'],function(){
 
 
 Route::group(['prefix'=>'eloquent-model'],function(){
-	
+
 	Route::get('select-users','HomeController@getAllUsers');
+
+	Route::get('select-foods','HomeController@getFoods');
+
+	Route::get('select-bills','HomeController@getBills');
+
 });
 
