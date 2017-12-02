@@ -190,5 +190,8 @@ Route::group(['prefix'=>'eloquent-model'],function(){
 
 	Route::get('select-bills','HomeController@getBills');
 
+
+	Route::get('select-food-type','HomeController@getFoodType');
+
 });
 

@@ -8,6 +8,7 @@ use App\User;
 use App\Foods;
 use App\Bills;
 use App\BillDetail;
+use App\FoodType;
 
 class HomeController extends Controller
 {
@@ -343,5 +344,20 @@ class HomeController extends Controller
             }
             echo "<hr>";
         }
+    }
+
+    function getFoodType(){
+        $types = FoodType::with('Foods')->get();
+
+        foreach($types as $loaiSP){
+            echo "Danh sách món ăn thuộc loại <b>".$loaiSP->name."</b> là:<br>";
+
+            foreach($loaiSP->Foods as $monan){
+                echo "- ".$monan->name."<br>";
+            }
+
+            echo "<hr>";
+        }
+        //dd($types);
     }
 }
