@@ -15,6 +15,7 @@
         }
     </style>
     <body>
+        <a href="https://www.google.com.vn">google</a>
         <h2>Upload File</h2>
         <form method="post" action="{{route('upload-file')}}" enctype="multipart/form-data"> 
 

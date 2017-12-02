@@ -15,6 +15,7 @@
         }
     </style>
     <body>
+        <a href="https://www.google.com.vn">wefg</a>
         <h2>Upload File</h2>
         <form method="post" action="<?php echo e(route('upload-file')); ?>" enctype="multipart/form-data"> 
 
@@ -23,11 +24,10 @@
             <br><br>
 
             <button type="submit" name="btnSend" >Upload</button>
-
-            <?php echo e(csrf_field()); ?>
+           
+         <?php echo e(csrf_field()); ?>
 
 
         </form>
-        
     </body>
 </html>
