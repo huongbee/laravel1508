@@ -347,7 +347,7 @@ class HomeController extends Controller
     }
 
     function getFoodType(){
-        $types = FoodType::with('Foods')->get();
+        $types = FoodType::with('Foods','MenuDetail')->get();
 
         foreach($types as $loaiSP){
             echo "Danh sách món ăn thuộc loại <b>".$loaiSP->name."</b> là:<br>";
@@ -356,8 +356,15 @@ class HomeController extends Controller
                 echo "- ".$monan->name."<br>";
             }
 
+            echo "===========================================================<br>";
+
+            echo "Chi tiết số lượng của MenuDetail của loại <b>".$loaiSP->name."</b> là:<br>";
+
+            foreach($loaiSP->MenuDetail as $chitiet){
+                echo "- ".$chitiet->quantity."<br>";
+            }
             echo "<hr>";
         }
-        //dd($types);
+      //  dd($types);
     }
 }
